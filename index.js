@@ -15,8 +15,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/yourdbname", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  
   })
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
