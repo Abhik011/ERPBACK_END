@@ -1,6 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 
 // Signup route
@@ -49,10 +49,10 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ message: "User not found. Please sign up first." });
     }
 
-    if (user.password !== password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: "Incorrect password" });
     }
-
     // Set user in session
     req.session.user = user;
 
