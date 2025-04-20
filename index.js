@@ -23,7 +23,7 @@ mongoose
 // CORS middleware - important for session cookies to work with frontend
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: true,
     credentials: true, // allows session cookie to be sent
   })
 );
